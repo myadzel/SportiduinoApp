@@ -45,6 +45,13 @@
             android:id="@+id/text_view_nfc_info"
             style="@style/TextViewNfcInfo"/>
 
+        <TextView
+            android:id="@+id/text_view_request_info"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        />
+
         <ProgressBar
             android:id="@+id/progress_bar"
             style="?android:attr/progressBarStyle"

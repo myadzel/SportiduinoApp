@@ -9,6 +9,8 @@ import androidx.core.content.ContextCompat;
 import org.sportiduino.app.App;
 import org.sportiduino.app.R;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -102,6 +104,47 @@ public class Util {
         Calendar calendar = Calendar.getInstance();
 
         return calendar.get(Calendar.YEAR) >= OPERATED_YEAR_MIN;
+    }
+
+    public static Boolean isValidUrl(String spec) {
+        try {
+            new URL(spec);
+
+            return true;
+        } catch (MalformedURLException e) {
+            return false;
+        }
+    }
+
+    public static String getUserInfoFromUrl(String location) {
+        try {
+            URL url = new URL(location);
+
+            String userInfo = url.getUserInfo();
+
+            if (userInfo != null) {
+                String[] userInfoArray = userInfo.split(":");
+
+                if (userInfoArray.length == 2) {
+                    return userInfo;
+                }
+            }
+
+        } catch (MalformedURLException e) {
+            // do nothing
+        }
+
+        return null;
+    }
+
+    public static String getUrlWithoutUserInfo(String location) {
+        String userInfo = getUserInfoFromUrl(location);
+
+        if (userInfo == null) {
+            return location;
+        } else {
+            return location.replace(userInfo + "@", "");
+        }
     }
 }
 
