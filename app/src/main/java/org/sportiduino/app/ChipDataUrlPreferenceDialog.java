@@ -31,11 +31,6 @@ public class ChipDataUrlPreferenceDialog extends PreferenceDialogFragmentCompat 
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
